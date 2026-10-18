@@ -1,0 +1,91 @@
+---
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/500.css';
+import '@fontsource/instrument-sans/600.css';
+import '@/styles/global.css';
+import { APP_NAME, SITE_URL } from '@/lib/site';
+
+const title = `${APP_NAME} — Headless CMS for apps and AI`;
+const description =
+    'Model content visually, deliver it through a typed JSON API and official SDKs, and let AI clients manage it over MCP — in an isolated workspace for every project.';
+const url = new URL(Astro.url.pathname, SITE_URL).href;
+const image = new URL('/brand/png/flexa-mark-square-512.png', SITE_URL).href;
+
+const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: APP_NAME,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    description,
+    url,
+    image,
+}).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Applies the stored appearance before first paint (defaults to light). -->
+        <script is:inline>
+            (function () {
+                let appearance = 'light';
+
+                try {
+                    appearance = localStorage.getItem('appearance') || 'light';
+                } catch (error) {}
+
+                const isDark =
+                    appearance === 'dark' ||
+                    (appearance === 'system' &&
+                        window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+                document.documentElement.classList.toggle('dark', isDark);
+                document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+            })();
+        </script>
+
+        <style is:inline>
+            html {
+                background-color: oklch(1 0 0);
+            }
+
+            html.dark {
+                background-color: oklch(0.145 0 0);
+            }
+        </style>
+
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={url} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={APP_NAME} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:locale" content="en" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+
+        <script type="application/ld+json" set:html={jsonLd} />
+        <meta name="generator" content={Astro.generator} />
+    </head>
+    <body class="font-sans antialiased">
+        <slot />
+    </body>
+</html>

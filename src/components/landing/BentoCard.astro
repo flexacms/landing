@@ -1,0 +1,42 @@
+---
+import { revealDelay } from '@/lib/site';
+import type { ComponentType } from 'react';
+
+interface Props {
+    icon: ComponentType<{ className?: string }>;
+    title: string;
+    description: string;
+    class?: string;
+    order?: number;
+}
+
+const {
+    icon: Icon,
+    title,
+    description,
+    class: className = '',
+    order = 0,
+} = Astro.props;
+const hasChildren = Astro.slots.has('default');
+---
+
+<div
+    data-reveal
+    style={revealDelay(order)}
+    class={`spotlight group relative flex flex-col overflow-hidden rounded-3xl bg-zinc-50 p-7 ring-1 ring-zinc-950/5 transition-shadow duration-500 hover:shadow-xl hover:shadow-indigo-500/5 hover:ring-zinc-950/10 dark:bg-white/[0.03] dark:ring-white/10 dark:hover:ring-white/20 ${className}`}
+>
+    <span class="flex size-9 items-center justify-center rounded-xl bg-white text-zinc-950 shadow-sm ring-1 ring-zinc-950/5 transition duration-500 group-hover:-translate-y-0.5 group-hover:rotate-[-6deg] group-hover:text-indigo-600 dark:bg-white/10 dark:text-white dark:ring-white/10 dark:group-hover:text-indigo-300">
+        <Icon className="size-4" />
+    </span>
+    <h3 class="mt-5 font-semibold tracking-tight">{title}</h3>
+    <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+        {description}
+    </p>
+    {
+        hasChildren && (
+            <div class="mt-auto pt-6">
+                <slot />
+            </div>
+        )
+    }
+</div>

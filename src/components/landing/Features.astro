@@ -1,0 +1,111 @@
+---
+import { FIELD_TYPES } from '@/lib/site';
+import {
+    Blocks,
+    History,
+    KeyRound,
+    Languages,
+    Sparkles,
+    Users,
+    Zap,
+} from 'lucide-react';
+import BentoCard from './BentoCard.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="features" class="scroll-mt-16 py-28">
+    <div class="mx-auto max-w-6xl px-6">
+        <SectionHeading
+            eyebrow="Platform"
+            title="Everything a content platform needs"
+            description="One workspace per project. Bring your own frontend — Next.js, Nuxt, Astro, mobile, or an AI agent."
+        />
+
+        <div class="mt-16 grid gap-4 lg:grid-cols-6">
+            <BentoCard
+                icon={Blocks}
+                title="Model anything, no migrations"
+                description="Entities with 20+ field types, field groups, relationships, repeaters and conditional logic."
+                class="lg:col-span-4"
+            >
+                <div class="flex flex-wrap gap-2">
+                    {
+                        FIELD_TYPES.map((type, index) => (
+                            <span
+                                style={`transition-delay: ${index * 30}ms`}
+                                class="rounded-full bg-white px-3 py-1 text-xs font-medium text-zinc-600 ring-1 ring-zinc-950/5 transition duration-300 group-hover:-translate-y-0.5 group-hover:ring-indigo-500/20 dark:bg-white/5 dark:text-zinc-300 dark:ring-white/10 dark:group-hover:ring-indigo-400/30"
+                            >
+                                {type}
+                            </span>
+                        ))
+                    }
+                </div>
+            </BentoCard>
+
+            <BentoCard
+                icon={Zap}
+                order={1}
+                title="Headless REST API"
+                description="Versioned JSON endpoints with validation, pagination, filters and generated TypeScript types."
+                class="lg:col-span-2"
+            >
+                <div class="space-y-1.5 font-mono text-xs">
+                    {
+                        [
+                            ['GET', '/api/v1/{entity}'],
+                            ['POST', '/api/v1/{entity}'],
+                            ['GET', '/api/v1/{entity}/schema'],
+                        ].map(([method, path]) => (
+                            <div class="flex gap-3 rounded-lg bg-white px-3 py-2 ring-1 ring-zinc-950/5 transition duration-300 group-hover:translate-x-1 last:delay-150 even:delay-75 dark:bg-white/5 dark:ring-white/10">
+                                <span class="w-9 font-semibold text-indigo-600 dark:text-indigo-400">
+                                    {method}
+                                </span>
+                                <span class="text-zinc-500">{path}</span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </BentoCard>
+
+            <BentoCard
+                icon={Sparkles}
+                order={2}
+                title="AI assistant"
+                description="Draft, translate and publish entries or design content models by chatting, with approval for risky actions."
+                class="lg:col-span-2"
+            />
+
+            <BentoCard
+                icon={KeyRound}
+                order={3}
+                title="Scoped API keys"
+                description="Hashed, revocable keys with read, write, delete, schema and MCP abilities, per model and with expiry."
+                class="lg:col-span-2"
+            />
+
+            <BentoCard
+                icon={Users}
+                order={4}
+                title="Workspaces & roles"
+                description="Multi-tenant by design. Owners, admins, editors and viewers, each workspace fully isolated."
+                class="lg:col-span-2"
+            />
+
+            <BentoCard
+                icon={Languages}
+                order={5}
+                title="Global from day one"
+                description="Translatable fields, locale-aware API payloads and an assistant that writes every language."
+                class="lg:col-span-3"
+            />
+
+            <BentoCard
+                icon={History}
+                order={6}
+                title="Audited by default"
+                description="Every change from the editor, API, MCP or AI is stored in a revision history you can restore."
+                class="lg:col-span-3"
+            />
+        </div>
+    </div>
+</section>

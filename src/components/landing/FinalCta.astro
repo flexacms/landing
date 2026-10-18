@@ -1,0 +1,48 @@
+---
+import { appUrl } from '@/lib/site';
+import PrimaryButton from './PrimaryButton.astro';
+
+interface Props {
+    isAuthEnabled?: boolean;
+}
+
+const { isAuthEnabled = true } = Astro.props;
+---
+
+<section class="relative isolate overflow-hidden border-t border-zinc-950/5 py-28 dark:border-white/5">
+    <div
+        aria-hidden="true"
+        class="absolute bottom-[-20rem] left-1/2 -z-10 h-[32rem] w-[60rem] -translate-x-1/2 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(99_102_241/0.22),transparent)]"
+    >
+    </div>
+    <div data-reveal class="mx-auto max-w-3xl px-6 text-center">
+        <h2 class="text-4xl font-semibold tracking-[-0.04em] text-balance sm:text-5xl">
+            Launch your content API today
+        </h2>
+        <p class="mx-auto mt-5 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
+            Start from a blog, catalog or marketing template and connect your
+            first app in minutes.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            {
+                isAuthEnabled ? (
+                    <>
+                        <PrimaryButton href={appUrl('/app/register')}>
+                            Get started
+                        </PrimaryButton>
+                        <a
+                            href={appUrl('/app/login')}
+                            class="inline-flex h-11 items-center rounded-full px-6 text-sm font-medium text-zinc-700 ring-1 ring-zinc-950/10 transition hover:bg-zinc-950/[0.03] dark:text-zinc-200 dark:ring-white/15 dark:hover:bg-white/5"
+                        >
+                            Sign in
+                        </a>
+                    </>
+                ) : (
+                    <PrimaryButton href="#integrations">
+                        Explore the SDKs
+                    </PrimaryButton>
+                )
+            }
+        </div>
+    </div>
+</section>

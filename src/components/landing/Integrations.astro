@@ -1,0 +1,54 @@
+---
+import { INTEGRATIONS, revealDelay } from '@/lib/site';
+import { ArrowUpRight } from 'lucide-react';
+import Brand from './Brand.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="integrations" class="scroll-mt-16 py-28">
+    <div class="mx-auto max-w-6xl px-6">
+        <SectionHeading
+            eyebrow="Integrations"
+            title="Official SDKs for every runtime"
+            description="Typed clients for JavaScript and PHP frameworks, plus plugins that bring your content into WordPress, Joomla and YOOtheme Pro."
+        />
+        <div class="mt-16 grid gap-px overflow-hidden rounded-3xl bg-zinc-950/5 ring-1 ring-zinc-950/5 sm:grid-cols-2 lg:grid-cols-4 dark:bg-white/10 dark:ring-white/10">
+            {
+                INTEGRATIONS.map(({ name, detail, icon }, index) => (
+                    <div
+                        data-reveal
+                        style={revealDelay(index % 4)}
+                        class="spotlight group relative bg-white p-6 transition hover:bg-zinc-50 dark:bg-zinc-950 dark:hover:bg-white/[0.03]"
+                    >
+                        <span class="flex size-10 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-zinc-950/5 transition duration-500 group-hover:-translate-y-1 group-hover:scale-110 group-hover:shadow-md dark:bg-white/5 dark:ring-white/10">
+                            <Brand
+                                icon={icon}
+                                class={icon.wide ? 'h-5 w-7' : 'size-5'}
+                            />
+                        </span>
+                        <h3 class="mt-4 font-semibold tracking-tight">
+                            {name}
+                        </h3>
+                        <p class="mt-1.5 truncate font-mono text-xs text-zinc-500">
+                            {detail}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+        <p
+            data-reveal
+            class="mt-10 text-center text-sm text-zinc-600 dark:text-zinc-400"
+        >
+            Prefer plain HTTP? Every workspace includes an API playground with
+            cURL, JavaScript, PHP and Python examples.{' '}
+            <a
+                href="https://github.com/flexacms/sdk"
+                class="inline-flex items-center gap-0.5 font-medium text-zinc-950 underline decoration-zinc-950/20 underline-offset-4 hover:decoration-zinc-950 dark:text-white dark:decoration-white/30 dark:hover:decoration-white"
+            >
+                Browse the SDKs
+                <ArrowUpRight className="size-3.5" />
+            </a>
+        </p>
+    </div>
+</section>

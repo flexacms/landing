@@ -1,0 +1,34 @@
+---
+import type { BrandIcon } from '@/lib/site';
+
+interface Props {
+    icon: BrandIcon;
+    class?: string;
+}
+
+const { icon, class: className = 'size-5' } = Astro.props;
+const url = `/images/brands/${icon.src}`;
+---
+
+{
+    icon.mask ? (
+        <span
+            aria-hidden="true"
+            class={`inline-block shrink-0 bg-current ${className}`}
+            style={{
+                backgroundColor: icon.color,
+                maskImage: `url(${url})`,
+                maskPosition: 'center',
+                maskRepeat: 'no-repeat',
+                maskSize: 'contain',
+            }}
+        />
+    ) : (
+        <img
+            src={url}
+            alt=""
+            loading="lazy"
+            class={`shrink-0 object-contain ${className}`}
+        />
+    )
+}

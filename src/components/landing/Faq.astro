@@ -1,0 +1,40 @@
+---
+import { FAQS, revealDelay } from '@/lib/site';
+import { ChevronDown } from 'lucide-react';
+---
+
+<section id="faq" class="scroll-mt-16 py-28">
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr_2fr]">
+        <div data-reveal>
+            <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                FAQ
+            </p>
+            <h2 class="mt-3 text-3xl font-semibold tracking-[-0.03em]">
+                Questions, answered
+            </h2>
+            <p class="mt-4 text-zinc-600 dark:text-zinc-400">
+                Can't find what you're looking for? Create a free workspace and
+                explore the API playground.
+            </p>
+        </div>
+        <div
+            data-reveal
+            style={revealDelay(2)}
+            class="divide-y divide-zinc-950/5 border-y border-zinc-950/5 dark:divide-white/10 dark:border-white/10"
+        >
+            {
+                FAQS.map(({ question, answer }) => (
+                    <details class="faq-item group py-6">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium transition hover:text-indigo-600 dark:hover:text-indigo-300 [&::-webkit-details-marker]:hidden">
+                            {question}
+                            <ChevronDown className="size-4 shrink-0 text-zinc-400 transition duration-300 group-open:rotate-180" />
+                        </summary>
+                        <p class="mt-3 pe-8 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            {answer}
+                        </p>
+                    </details>
+                ))
+            }
+        </div>
+    </div>
+</section>

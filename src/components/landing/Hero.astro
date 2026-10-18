@@ -1,0 +1,136 @@
+---
+import CodeShowcase from '@/components/react/code-showcase';
+import HeroScene from '@/components/react/hero-scene';
+import { appUrl, riseDelay } from '@/lib/site';
+import { ArrowRight, Check } from 'lucide-react';
+import PrimaryButton from './PrimaryButton.astro';
+
+interface Props {
+    isAuthEnabled?: boolean;
+}
+
+const { isAuthEnabled = true } = Astro.props;
+---
+
+<section class="relative isolate">
+    <div
+        aria-hidden="true"
+        class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgb(9_9_11/0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgb(9_9_11/0.06)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black_40%,transparent_100%)] bg-[size:56px_56px] dark:bg-[linear-gradient(to_right,rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgb(255_255_255/0.06)_1px,transparent_1px)]"
+    >
+    </div>
+    <div
+        aria-hidden="true"
+        class="absolute top-[-12rem] left-1/2 -z-10 h-[36rem] w-[64rem] -translate-x-1/2 animate-aurora rounded-full bg-[radial-gradient(closest-side,rgb(99_102_241/0.28),transparent)] blur-2xl dark:bg-[radial-gradient(closest-side,rgb(99_102_241/0.35),transparent)]"
+    >
+    </div>
+    <div
+        aria-hidden="true"
+        class="absolute top-24 left-[12%] -z-10 size-72 animate-float rounded-full bg-[radial-gradient(closest-side,rgb(217_70_239/0.16),transparent)] blur-2xl"
+    >
+    </div>
+    <div
+        aria-hidden="true"
+        class="absolute top-48 right-[10%] -z-10 size-80 animate-float rounded-full bg-[radial-gradient(closest-side,rgb(56_189_248/0.14),transparent)] blur-2xl [animation-delay:-3.5s]"
+    >
+    </div>
+
+    <div class="mx-auto grid max-w-6xl items-center gap-8 px-6 pt-20 pb-16 sm:pt-28 lg:grid-cols-[1.1fr_1fr] lg:gap-4 lg:pt-20">
+        <div class="text-center lg:text-left">
+            <a
+                href="#mcp"
+                style={riseDelay(0)}
+                class="group relative inline-flex animate-rise items-center gap-2 overflow-hidden rounded-full border border-zinc-950/10 bg-white/60 py-1 ps-1 pe-3 text-xs font-medium text-zinc-700 shadow-sm backdrop-blur transition hover:border-zinc-950/20 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:border-white/20"
+            >
+                <span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-y-0 left-0 w-1/3 animate-shine bg-gradient-to-r from-transparent via-white/60 to-transparent dark:via-white/15"
+                ></span>
+                <span class="relative flex items-center gap-1.5 rounded-full bg-indigo-600 px-2 py-0.5 text-[11px] font-semibold text-white">
+                    <span class="relative flex size-1.5">
+                        <span class="absolute inline-flex size-full animate-ping rounded-full bg-white/80"></span>
+                        <span class="relative inline-flex size-1.5 rounded-full bg-white"></span>
+                    </span>
+                    New
+                </span>
+                Built-in MCP server for AI clients
+                <ArrowRight className="size-3 transition group-hover:translate-x-0.5" />
+            </a>
+
+            <h1
+                style={riseDelay(120)}
+                class="mx-auto mt-8 max-w-4xl animate-rise text-5xl font-semibold tracking-[-0.04em] text-balance sm:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl"
+            >
+                Content infrastructure for{' '}
+                <span class="animate-gradient-pan bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-indigo-500 bg-[length:200%_auto] bg-clip-text text-transparent">
+                    apps and AI
+                </span>
+            </h1>
+            <p
+                style={riseDelay(240)}
+                class="mx-auto mt-6 max-w-2xl animate-rise text-lg leading-relaxed text-pretty text-zinc-600 lg:mx-0 dark:text-zinc-400"
+            >
+                Model content visually, deliver it through a typed JSON API and
+                official SDKs, and let AI clients manage it over MCP — in an
+                isolated workspace for every project.
+            </p>
+
+            <div
+                style={riseDelay(360)}
+                class="mt-10 flex animate-rise flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+            >
+                {
+                    isAuthEnabled ? (
+                        <>
+                            <PrimaryButton href={appUrl('/app/register')}>
+                                Create your workspace
+                            </PrimaryButton>
+                            <a
+                                href="#integrations"
+                                class="inline-flex h-11 items-center gap-2 rounded-full px-6 text-sm font-medium text-zinc-700 ring-1 ring-zinc-950/10 transition hover:bg-zinc-950/[0.03] dark:text-zinc-200 dark:ring-white/15 dark:hover:bg-white/5"
+                            >
+                                Explore the SDKs
+                            </a>
+                        </>
+                    ) : (
+                        <PrimaryButton href="#integrations" shine={false}>
+                            Explore the SDKs
+                        </PrimaryButton>
+                    )
+                }
+            </div>
+
+            <ul
+                style={riseDelay(480)}
+                class="mt-8 flex animate-rise flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-500 lg:justify-start"
+            >
+                {
+                    [
+                        'REST API & TypeScript types',
+                        'Scoped API keys',
+                        'Revision history',
+                    ].map((item) => (
+                        <li class="flex items-center gap-1.5">
+                            <Check className="size-4 text-indigo-500" />
+                            {item}
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+
+        <div
+            aria-hidden="true"
+            style={riseDelay(300)}
+            class="relative h-[24rem] animate-rise sm:h-[30rem] lg:-me-16 lg:h-[34rem]"
+        >
+            <HeroScene client:load />
+        </div>
+    </div>
+
+    <div
+        style={riseDelay(600)}
+        class="mx-auto max-w-5xl animate-rise px-6 pb-24 [perspective:1600px]"
+    >
+        <CodeShowcase client:load />
+    </div>
+</section>
