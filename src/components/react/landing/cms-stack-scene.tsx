@@ -26,20 +26,20 @@ const LAYERS: Layer[] = [
     {
         key: 'models',
         color: '#6366f1',
-        title: 'Content models',
-        detail: '20+ field types',
+        title: 'Edit text & images',
+        detail: 'No code needed',
     },
     {
         key: 'api',
         color: '#8b5cf6',
-        title: 'Typed REST API',
-        detail: '/api/v1/{entity}',
+        title: 'Saved with history',
+        detail: 'Undo any change',
     },
     {
         key: 'channels',
         color: '#d946ef',
-        title: 'SDKs · Plugins · MCP',
-        detail: 'Sites, apps & agents',
+        title: 'Your site updates',
+        detail: 'Web, app or AI',
     },
 ];
 

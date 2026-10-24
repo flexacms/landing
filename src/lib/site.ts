@@ -23,10 +23,10 @@ export const appUrl = (path: string): string => `${APP_URL}${path}`;
 
 /** Anchors point at the home page so they also work from /blog. */
 export const NAV_LINKS = [
-    { label: 'Features', href: '/#features' },
     { label: 'How it works', href: '/#how-it-works' },
-    { label: 'Integrations', href: '/#integrations' },
-    { label: 'MCP', href: '/#mcp' },
+    { label: 'Use cases', href: '/#use-cases' },
+    { label: 'AI', href: '/#mcp' },
+    { label: 'Developers', href: '/#integrations' },
     { label: 'FAQ', href: '/#faq' },
     { label: 'Blog', href: '/blog' },
 ];
@@ -137,36 +137,18 @@ $post->value('headline'); // resolves the app locale`,
     },
 ];
 
-export const STEPS = [
-    {
-        title: 'Start from a template',
-        description:
-            'Pick a blog, product catalog, marketing site or a blank project. Sample content types and entries are ready to edit.',
-    },
-    {
-        title: 'Write your content',
-        description:
-            'Define your fields in the visual editor, invite your team, and write yourself or let the AI assistant draft it.',
-    },
-    {
-        title: 'Publish it anywhere',
-        description:
-            'Create an API key and fetch content from your website or app, or connect an AI tool to manage it for you.',
-    },
-];
-
 export const USE_CASES = [
     {
-        title: 'Company website',
+        title: 'Landing page built with AI',
         description:
-            'Marketing updates pages, banners and campaigns from the editor. Content changes go live without a code change or redeploy.',
+            'Your AI built the page once. Now you change the headline, prices and images yourself, without a new prompt.',
         example: {
-            heading: 'Entry · Spring campaign',
+            heading: 'Landing · Home',
             status: 'Published',
             rows: [
-                { label: 'headline', value: 'Ship faster this spring' },
-                { label: 'hero_image', value: 'media/spring.jpg' },
-                { label: 'cta_url', value: '/pricing' },
+                { label: 'headline', value: 'Launch your course today' },
+                { label: 'price', value: '€29' },
+                { label: 'hero_image', value: 'media/hero.jpg' },
             ],
         },
     },
@@ -304,12 +286,20 @@ export const MCP_CLIENTS = [
 
 export const FAQS = [
     {
-        question: 'What is a headless CMS?',
-        answer: 'A content management system that stores and edits your content but does not render your website. Flexa gives you an editor for your content and an API to read it, so you can use any frontend: Next.js, Nuxt, Astro, a mobile app or an AI tool.',
+        question: 'What is a CMS, and why would I need one?',
+        answer: "A CMS (content management system) is where your website's content lives: the text, images and prices. Without one, that content is written inside your site's code, so every change means editing code or asking your AI again. With Flexa, you edit content in a simple editor and your site shows the new version.",
     },
     {
-        question: 'Do I need to write migrations to add content types?',
-        answer: 'No. Models and fields are defined in the visual builder (or by an AI client with the Schema ability) and are available in the API immediately.',
+        question: 'I built my site with Lovable, Bolt or v0. Can I use Flexa?',
+        answer: "Yes, as long as your site can load data from the web. Create a read-only API key in Flexa and ask your AI tool to load the site's text and images from Flexa's API. If you use Claude, Cursor or VS Code, they can also connect to Flexa directly (over MCP) and create the content structure for you.",
+    },
+    {
+        question: 'Do I need to know how to code?',
+        answer: 'Not to edit content. Connecting your site is a one-time setup that your AI tool or a developer can do. After that, all your changes happen in the Flexa editor.',
+    },
+    {
+        question: 'Will editing in Flexa break my design?',
+        answer: "Flexa only changes the content, not the layout. The design stays in your site's code, so a new headline can't rewrite a section the way a new prompt can. And every change can be undone from the revision history.",
     },
     {
         question: 'Can I use it with my existing WordPress or Joomla site?',
@@ -322,10 +312,6 @@ export const FAQS = [
     {
         question: 'How do translations work?',
         answer: 'Mark any field as translatable and the API returns a value per locale. The SDKs include a localize helper with fallbacks, and the assistant can translate entries for you.',
-    },
-    {
-        question: 'Can I keep separate projects apart?',
-        answer: 'Each workspace has its own models, entries, media, members and API keys. Nothing is shared between workspaces.',
     },
 ];
 

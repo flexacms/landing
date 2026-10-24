@@ -1,53 +1,78 @@
 ---
 import { revealDelay } from '@/lib/site';
-import { ArrowRight, Building2, Code2, PenLine } from 'lucide-react';
+import { ArrowRight, Code2, PenLine, Rocket } from 'lucide-react';
 import ExampleCard from './ExampleCard.astro';
 import SectionHeading from './SectionHeading.astro';
 
 const audiences = [
     {
-        icon: Code2,
-        title: 'Developers',
+        icon: Rocket,
+        title: 'Makers with an AI-built site',
         description:
-            'Stop hardcoding text, prices and images. Model the content once and read it through a typed API and SDKs.',
+            'You shipped a landing page with AI. Now keep it up to date without prompting again.',
     },
     {
         icon: PenLine,
         title: 'Marketing and content teams',
         description:
-            'Update pages, posts and products yourself, in every language, with a history you can undo.',
+            'Change copy, images and prices yourself, in every language, with an undo button.',
     },
     {
-        icon: Building2,
-        title: 'Agencies',
+        icon: Code2,
+        title: 'Developers and agencies',
         description:
-            'One workspace per client, with roles for who edits and who reviews, and keys you can revoke.',
+            'Hand clients an editor instead of change requests. Typed API, SDKs and one workspace per client.',
     },
 ];
 ---
 
-<section id="what-is-flexa" class="scroll-mt-16 py-28">
+<section
+    id="how-it-works"
+    class="scroll-mt-16 border-y border-zinc-950/5 bg-zinc-50/70 py-28 dark:border-white/5 dark:bg-white/[0.015]"
+>
     <div class="mx-auto max-w-6xl px-6">
         <SectionHeading
-            eyebrow="What Flexa does"
-            title="Your team edits the content. Your site shows it."
-            description="Flexa is a headless CMS: the place where your website's or app's content lives. Developers connect it once, and after that nobody needs to touch code to change a headline, a price or a blog post."
+            eyebrow="How it works"
+            title="Connect once. Edit forever."
+            description="Flexa is a CMS: the place where your website's content lives. Your site reads the content from Flexa, so changing it never means touching code again."
         />
 
         <div class="mt-16 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            <div data-reveal style={revealDelay(0)} class="flex flex-col rounded-3xl bg-zinc-50 p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
+            <div data-reveal style={revealDelay(0)} class="flex flex-col rounded-3xl bg-white p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
                 <p class="font-mono text-xs text-indigo-600 dark:text-indigo-400">01</p>
-                <h3 class="mt-2 font-semibold tracking-tight">Your team writes</h3>
+                <h3 class="mt-2 font-semibold tracking-tight">Connect your site once</h3>
                 <p class="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400">
-                    Editors, marketers or an AI tool update content in the Flexa editor.
+                    Ask your AI tool to move your site's text and images into
+                    Flexa. A developer can do it too.
+                </p>
+                <div class="mt-auto pt-5">
+                    <div class="rounded-xl bg-zinc-50 p-4 text-sm ring-1 ring-zinc-950/5 dark:bg-white/5 dark:ring-white/10">
+                        <p class="text-[11px] font-medium text-zinc-500">You, to your AI tool</p>
+                        <p class="mt-1.5 leading-relaxed text-zinc-800 dark:text-zinc-200">
+                            “Move the headlines, texts and images of my landing
+                            page into Flexa, and load them from there.”
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <ArrowRight aria-hidden="true" className="mx-auto size-5 rotate-90 self-center text-zinc-400 lg:rotate-0" />
+
+            <div data-reveal style={revealDelay(1)} class="flex flex-col rounded-3xl bg-white p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
+                <p class="font-mono text-xs text-indigo-600 dark:text-indigo-400">02</p>
+                <h3 class="mt-2 font-semibold tracking-tight">Edit like a document</h3>
+                <p class="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400">
+                    Change text, images and prices in a simple editor. Every
+                    change can be undone.
                 </p>
                 <div class="mt-auto pt-5">
                     <ExampleCard
-                        heading="Promo · Winter membership"
-                        status="Draft"
+                        heading="Home · Hero"
+                        status="Editing"
                         rows={[
-                            { label: 'headline', value: 'Climb all winter' },
-                            { label: 'price', value: '€49/month' },
+                            { label: 'headline', value: 'Launch your course today' },
+                            { label: 'price', value: '€29' },
+                            { label: 'button', value: 'Join now' },
                         ]}
                     />
                 </div>
@@ -55,35 +80,19 @@ const audiences = [
 
             <ArrowRight aria-hidden="true" className="mx-auto size-5 rotate-90 self-center text-zinc-400 lg:rotate-0" />
 
-            <div data-reveal style={revealDelay(1)} class="flex flex-col rounded-3xl bg-zinc-50 p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
-                <p class="font-mono text-xs text-indigo-600 dark:text-indigo-400">02</p>
-                <h3 class="mt-2 font-semibold tracking-tight">Flexa stores and serves it</h3>
-                <p class="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400">
-                    Every change is saved with history and delivered through a secure API.
-                </p>
-                <div class="mt-auto pt-5">
-                    <div class="rounded-xl bg-zinc-950 p-4 font-mono text-xs leading-relaxed text-zinc-300 ring-1 ring-white/10">
-                        <span class="text-indigo-300">GET</span> /api/v1/promos
-                        <br />
-                        <span class="text-zinc-500">→</span> {'{ "headline": "Climb all winter" }'}
-                    </div>
-                </div>
-            </div>
-
-            <ArrowRight aria-hidden="true" className="mx-auto size-5 rotate-90 self-center text-zinc-400 lg:rotate-0" />
-
-            <div data-reveal style={revealDelay(2)} class="flex flex-col rounded-3xl bg-zinc-50 p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
+            <div data-reveal style={revealDelay(2)} class="flex flex-col rounded-3xl bg-white p-6 ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
                 <p class="font-mono text-xs text-indigo-600 dark:text-indigo-400">03</p>
-                <h3 class="mt-2 font-semibold tracking-tight">Your site or app shows it</h3>
+                <h3 class="mt-2 font-semibold tracking-tight">Your site updates</h3>
                 <p class="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400">
-                    Your website, mobile app, WordPress site or AI agent reads the same content.
+                    Publish, and your website shows the new version. No prompt,
+                    no code, no redeploy.
                 </p>
                 <div class="mt-auto pt-5">
-                    <div class="rounded-xl bg-white p-4 ring-1 ring-zinc-950/5 dark:bg-white/5 dark:ring-white/10">
-                        <p class="text-[11px] font-medium text-indigo-600 dark:text-indigo-300">€49/month</p>
-                        <p class="mt-1 text-base font-semibold tracking-tight">Climb all winter</p>
+                    <div class="rounded-xl bg-zinc-50 p-4 ring-1 ring-zinc-950/5 dark:bg-white/5 dark:ring-white/10">
+                        <p class="text-base font-semibold tracking-tight">Launch your course today</p>
+                        <p class="mt-1 text-[11px] font-medium text-indigo-600 dark:text-indigo-300">Only €29</p>
                         <span class="mt-3 inline-flex rounded-full bg-zinc-950 px-3 py-1 text-[11px] font-medium text-white dark:bg-white dark:text-zinc-950">
-                            Book now
+                            Join now
                         </span>
                     </div>
                 </div>
@@ -98,7 +107,7 @@ const audiences = [
                             <Icon className="size-4" />
                         </span>
                         <h3 class="mt-4 font-semibold tracking-tight">
-                            For {title.toLowerCase()}
+                            For {title.charAt(0).toLowerCase() + title.slice(1)}
                         </h3>
                         <p class="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                             {description}

@@ -14,10 +14,10 @@ const { title: pageTitle, description: pageDescription } = Astro.props;
 
 const title = pageTitle
     ? `${pageTitle} — ${APP_NAME}`
-    : `${APP_NAME} — Headless CMS for websites and apps`;
+    : `${APP_NAME} — Edit your AI-built website without code`;
 const description =
     pageDescription ??
-    'Flexa is a headless CMS. Write and organize your content in a visual editor, then publish it to any website or app through an API. AI tools can help you write and publish too.';
+    'Flexa keeps the text, images and prices of your website in a simple editor. Connect it once with your AI tool, then update your content yourself, with no code and no new prompts.';
 const url = new URL(Astro.url.pathname, SITE_URL).href;
 const image = new URL('/brand/png/flexa-mark-square-512.png', SITE_URL).href;
 

@@ -1,4 +1,5 @@
 ---
+import CodeShowcase from '@/components/react/code-showcase';
 import { INTEGRATIONS, revealDelay } from '@/lib/site';
 import { ArrowUpRight } from 'lucide-react';
 import Brand from './Brand.astro';
@@ -8,10 +9,13 @@ import SectionHeading from './SectionHeading.astro';
 <section id="integrations" class="scroll-mt-16 py-28">
     <div class="mx-auto max-w-6xl px-6">
         <SectionHeading
-            eyebrow="Integrations"
-            title="Works with the tools you already use"
-            description="Official libraries for JavaScript and PHP frameworks, plus plugins for WordPress, Joomla and YOOtheme Pro."
+            eyebrow="For developers"
+            title="A clean API, official SDKs and plugins"
+            description="Read content from any framework in a few lines, or use the plugins for WordPress, Joomla and YOOtheme Pro."
         />
+        <div data-reveal class="mx-auto mt-16 max-w-5xl [perspective:1600px]">
+            <CodeShowcase client:visible />
+        </div>
         <div class="mt-16 grid gap-px overflow-hidden rounded-3xl bg-zinc-950/5 ring-1 ring-zinc-950/5 sm:grid-cols-2 lg:grid-cols-4 dark:bg-white/10 dark:ring-white/10">
             {
                 INTEGRATIONS.map(({ name, detail, icon }, index) => (

@@ -1,5 +1,4 @@
 ---
-import CodeShowcase from '@/components/react/code-showcase';
 import HeroScene from '@/components/react/hero-scene';
 import { appUrl, riseDelay } from '@/lib/site';
 import { ArrowRight, Check } from 'lucide-react';
@@ -37,7 +36,7 @@ const { isAuthEnabled = true } = Astro.props;
     <div class="mx-auto grid max-w-6xl items-center gap-8 px-6 pt-20 pb-16 sm:pt-28 lg:grid-cols-[1.1fr_1fr] lg:gap-4 lg:pt-20">
         <div class="text-center lg:text-left">
             <a
-                href="#mcp"
+                href="#how-it-works"
                 style={riseDelay(0)}
                 class="group relative inline-flex animate-rise items-center gap-2 overflow-hidden rounded-full border border-zinc-950/10 bg-white/60 py-1 ps-1 pe-3 text-xs font-medium text-zinc-700 shadow-sm backdrop-blur transition hover:border-zinc-950/20 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:border-white/20"
             >
@@ -52,7 +51,7 @@ const { isAuthEnabled = true } = Astro.props;
                     </span>
                     New
                 </span>
-                Let AI tools like Claude manage your content
+                For sites built with Lovable, Bolt, v0 or Claude
                 <ArrowRight className="size-3 transition group-hover:translate-x-0.5" />
             </a>
 
@@ -60,19 +59,19 @@ const { isAuthEnabled = true } = Astro.props;
                 style={riseDelay(120)}
                 class="mx-auto mt-8 max-w-4xl animate-rise text-5xl font-semibold tracking-[-0.04em] text-balance sm:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl"
             >
-                Manage your content in one place.{' '}
+                Built your site with AI?{' '}
                 <span class="animate-gradient-pan bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-indigo-500 bg-[length:200%_auto] bg-clip-text text-transparent">
-                    Publish it anywhere.
+                    Edit it without prompting again.
                 </span>
             </h1>
             <p
                 style={riseDelay(240)}
                 class="mx-auto mt-6 max-w-2xl animate-rise text-lg leading-relaxed text-pretty text-zinc-600 lg:mx-0 dark:text-zinc-400"
             >
-                Flexa is where your team edits the text, images and products
-                of your website or app. Developers connect it once through an
-                API, and after that anyone can update content without touching
-                code.
+                Flexa keeps the text, images and prices of your website in a
+                simple editor. Connect it once, and from then on you change
+                your content yourself: no code, no new prompts, no broken
+                layouts.
             </p>
 
             <div
@@ -106,9 +105,9 @@ const { isAuthEnabled = true } = Astro.props;
             >
                 {
                     [
-                        'Ready-made content API',
-                        'Secure, revocable keys',
-                        'Full change history',
+                        'No code to edit',
+                        'Undo any change',
+                        'Invite your team',
                     ].map((item) => (
                         <li class="flex items-center gap-1.5">
                             <Check className="size-4 text-indigo-500" />
@@ -126,12 +125,5 @@ const { isAuthEnabled = true } = Astro.props;
         >
             <HeroScene client:load />
         </div>
-    </div>
-
-    <div
-        style={riseDelay(600)}
-        class="mx-auto max-w-5xl animate-rise px-6 pb-24 [perspective:1600px]"
-    >
-        <CodeShowcase client:load />
     </div>
 </section>

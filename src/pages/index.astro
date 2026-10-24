@@ -8,8 +8,8 @@ import Header from '@/components/landing/Header.astro';
 import Hero from '@/components/landing/Hero.astro';
 import Integrations from '@/components/landing/Integrations.astro';
 import Mcp from '@/components/landing/Mcp.astro';
+import Problem from '@/components/landing/Problem.astro';
 import StackStrip from '@/components/landing/StackStrip.astro';
-import Steps from '@/components/landing/Steps.astro';
 import UseCases from '@/components/landing/UseCases.astro';
 import MobileMenu from '@/components/react/mobile-menu';
 import Layout from '@/layouts/Layout.astro';
@@ -26,12 +26,12 @@ import { APP_NAME, IS_AUTH_ENABLED } from '@/lib/site';
         <main>
             <Hero isAuthEnabled={IS_AUTH_ENABLED} />
             <StackStrip />
+            <Problem />
             <Explainer />
-            <Features />
-            <Steps />
             <UseCases />
-            <Integrations />
+            <Features />
             <Mcp />
+            <Integrations />
             <Faq />
             <FinalCta isAuthEnabled={IS_AUTH_ENABLED} />
         </main>
