@@ -48,7 +48,7 @@ export default function CodeShowcase() {
                     </div>
                     <div
                         role="tablist"
-                        className="flex gap-1 overflow-x-auto py-2"
+                        className="flex gap-1 overflow-x-auto overflow-y-hidden py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
                     >
                         {CODE_SAMPLES.map(({ label }, index) => (
                             <button
