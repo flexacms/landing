@@ -155,37 +155,58 @@ export const USE_CASES = [
         title: 'Company website',
         description:
             'Marketing updates pages, banners and campaigns from the editor. Content changes go live without a code change or redeploy.',
-        example: `Entry: Spring campaign      published
-headline    Ship faster this spring
-hero_image  media/spring.jpg
-cta_url     /pricing`,
+        example: {
+            heading: 'Entry · Spring campaign',
+            status: 'Published',
+            rows: [
+                { label: 'headline', value: 'Ship faster this spring' },
+                { label: 'hero_image', value: 'media/spring.jpg' },
+                { label: 'cta_url', value: '/pricing' },
+            ],
+        },
     },
     {
         title: 'Multilingual blog',
         description:
             'Write in English, let the AI assistant draft the translations, and serve every language from the same API.',
-        example: `title        { "en": "Our new pricing",
-               "es": "Nuestros nuevos precios" }
-reading_time 4`,
+        example: {
+            heading: 'Entry · Our new pricing',
+            status: 'EN · ES',
+            rows: [
+                { label: 'title.en', value: 'Our new pricing' },
+                { label: 'title.es', value: 'Nuestros nuevos precios' },
+                { label: 'reading_time', value: '4 min' },
+            ],
+        },
     },
     {
         title: 'Online store catalog',
         description:
             'Model products with prices, colors, variants and categories. Your storefront reads them with one request.',
-        example: `name      Linen shirt
-price     39.00
-color     #E8DCC4
-in_stock  true
-variants  [S, M, L]     repeater
-category  Clothing      relationship`,
+        example: {
+            heading: 'Product · Linen shirt',
+            status: 'In stock',
+            rows: [
+                { label: 'price', value: '39.00' },
+                { label: 'color', value: '#E8DCC4' },
+                { label: 'variants', value: 'S · M · L' },
+                { label: 'category', value: 'Clothing' },
+            ],
+        },
     },
     {
         title: 'Agency with several clients',
         description:
             'One isolated workspace per client, each with its own content models, entries and API keys. Invite clients as viewers to review drafts.',
-        example: `Acme Corp        3 editors · 1 viewer
-Bakery Lola      1 editor
-Studio Nord      2 editors · 1 viewer`,
+        example: {
+            heading: 'Workspaces',
+            status: '3 active',
+            rows: [
+                { label: 'Acme Corp', value: '3 editors · 1 viewer' },
+                { label: 'Bakery Lola', value: '1 editor' },
+                { label: 'Studio Nord', value: '2 editors · 1 viewer' },
+            ],
+        },
     },
 ];
 

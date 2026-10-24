@@ -24,7 +24,20 @@ const icons = [Megaphone, Languages, ShoppingBag, Building2];
                         title={title}
                         description={description}
                     >
-                        <pre class="overflow-x-auto rounded-xl bg-white p-4 font-mono text-xs leading-relaxed whitespace-pre text-zinc-600 ring-1 ring-zinc-950/5 dark:bg-white/5 dark:text-zinc-300 dark:ring-white/10">{example}</pre>
+                        <div class="overflow-hidden rounded-xl bg-white ring-1 ring-zinc-950/5 dark:bg-white/5 dark:ring-white/10">
+                            <div class="flex items-center justify-between border-b border-zinc-950/5 px-4 py-2.5 text-xs dark:border-white/10">
+                                <span class="font-medium text-zinc-950 dark:text-white">{example.heading}</span>
+                                <span class="rounded-full bg-indigo-500/10 px-2 py-0.5 font-medium text-indigo-600 dark:text-indigo-300">{example.status}</span>
+                            </div>
+                            <dl class="divide-y divide-zinc-950/5 dark:divide-white/10">
+                                {example.rows.map(({ label, value }) => (
+                                    <div class="flex items-baseline justify-between gap-4 px-4 py-2 text-xs">
+                                        <dt class="font-mono text-zinc-500">{label}</dt>
+                                        <dd class="truncate text-right font-medium text-zinc-800 dark:text-zinc-200">{value}</dd>
+                                    </div>
+                                ))}
+                            </dl>
+                        </div>
                     </BentoCard>
                 ))
             }
