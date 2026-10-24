@@ -150,6 +150,45 @@ export const STEPS = [
     },
 ];
 
+export const USE_CASES = [
+    {
+        title: 'Company website',
+        description:
+            'Marketing updates pages, banners and campaigns from the editor. Content changes go live without a code change or redeploy.',
+        example: `Entry: Spring campaign      published
+headline    Ship faster this spring
+hero_image  media/spring.jpg
+cta_url     /pricing`,
+    },
+    {
+        title: 'Multilingual blog',
+        description:
+            'Write in English, let the AI assistant draft the translations, and serve every language from the same API.',
+        example: `title        { "en": "Our new pricing",
+               "es": "Nuestros nuevos precios" }
+reading_time 4`,
+    },
+    {
+        title: 'Online store catalog',
+        description:
+            'Model products with prices, colors, variants and categories. Your storefront reads them with one request.',
+        example: `name      Linen shirt
+price     39.00
+color     #E8DCC4
+in_stock  true
+variants  [S, M, L]     repeater
+category  Clothing      relationship`,
+    },
+    {
+        title: 'Agency with several clients',
+        description:
+            'One isolated workspace per client, each with its own content models, entries and API keys. Invite clients as viewers to review drafts.',
+        example: `Acme Corp        3 editors · 1 viewer
+Bakery Lola      1 editor
+Studio Nord      2 editors · 1 viewer`,
+    },
+];
+
 export const INTEGRATIONS: { name: string; detail: string; icon: BrandIcon }[] =
     [
         {

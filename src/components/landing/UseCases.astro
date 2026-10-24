@@ -1,0 +1,33 @@
+---
+import { USE_CASES } from '@/lib/site';
+import { Building2, Languages, Megaphone, ShoppingBag } from 'lucide-react';
+import BentoCard from './BentoCard.astro';
+import SectionHeading from './SectionHeading.astro';
+
+const icons = [Megaphone, Languages, ShoppingBag, Building2];
+---
+
+<section id="use-cases" class="scroll-mt-16 py-28">
+    <div class="mx-auto max-w-6xl px-6">
+        <SectionHeading
+            eyebrow="Use cases"
+            title="Built for the content you already manage"
+            description="From one landing page to a multilingual store, it's the same editor and the same API."
+        />
+
+        <div class="mt-16 grid gap-4 lg:grid-cols-2">
+            {
+                USE_CASES.map(({ title, description, example }, index) => (
+                    <BentoCard
+                        icon={icons[index]}
+                        order={index % 2}
+                        title={title}
+                        description={description}
+                    >
+                        <pre class="overflow-x-auto rounded-xl bg-white p-4 font-mono text-xs leading-relaxed whitespace-pre text-zinc-600 ring-1 ring-zinc-950/5 dark:bg-white/5 dark:text-zinc-300 dark:ring-white/10">{example}</pre>
+                    </BentoCard>
+                ))
+            }
+        </div>
+    </div>
+</section>
