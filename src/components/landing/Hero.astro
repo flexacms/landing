@@ -52,7 +52,7 @@ const { isAuthEnabled = true } = Astro.props;
                     </span>
                     New
                 </span>
-                Built-in MCP server for AI clients
+                Let AI tools like Claude manage your content
                 <ArrowRight className="size-3 transition group-hover:translate-x-0.5" />
             </a>
 
@@ -60,18 +60,19 @@ const { isAuthEnabled = true } = Astro.props;
                 style={riseDelay(120)}
                 class="mx-auto mt-8 max-w-4xl animate-rise text-5xl font-semibold tracking-[-0.04em] text-balance sm:text-7xl lg:mx-0 lg:text-6xl xl:text-7xl"
             >
-                Content infrastructure for{' '}
+                Manage your content in one place.{' '}
                 <span class="animate-gradient-pan bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-indigo-500 bg-[length:200%_auto] bg-clip-text text-transparent">
-                    apps and AI
+                    Publish it anywhere.
                 </span>
             </h1>
             <p
                 style={riseDelay(240)}
                 class="mx-auto mt-6 max-w-2xl animate-rise text-lg leading-relaxed text-pretty text-zinc-600 lg:mx-0 dark:text-zinc-400"
             >
-                Model content visually, deliver it through a typed JSON API and
-                official SDKs, and let AI clients manage it over MCP — in an
-                isolated workspace for every project.
+                Flexa is a headless CMS: write and organize your website's or
+                app's content in a visual editor, then deliver it to any
+                frontend through an API. Your AI tools can help you write and
+                publish too.
             </p>
 
             <div
@@ -82,18 +83,18 @@ const { isAuthEnabled = true } = Astro.props;
                     isAuthEnabled ? (
                         <>
                             <PrimaryButton href={appUrl('/app/register')}>
-                                Create your workspace
+                                Create a free workspace
                             </PrimaryButton>
                             <a
-                                href="#integrations"
+                                href="#how-it-works"
                                 class="inline-flex h-11 items-center gap-2 rounded-full px-6 text-sm font-medium text-zinc-700 ring-1 ring-zinc-950/10 transition hover:bg-zinc-950/[0.03] dark:text-zinc-200 dark:ring-white/15 dark:hover:bg-white/5"
                             >
-                                Explore the SDKs
+                                See how it works
                             </a>
                         </>
                     ) : (
-                        <PrimaryButton href="#integrations" shine={false}>
-                            Explore the SDKs
+                        <PrimaryButton href="#how-it-works" shine={false}>
+                            See how it works
                         </PrimaryButton>
                     )
                 }
@@ -105,9 +106,9 @@ const { isAuthEnabled = true } = Astro.props;
             >
                 {
                     [
-                        'REST API & TypeScript types',
-                        'Scoped API keys',
-                        'Revision history',
+                        'Ready-made content API',
+                        'Secure, revocable keys',
+                        'Full change history',
                     ].map((item) => (
                         <li class="flex items-center gap-1.5">
                             <Check className="size-4 text-indigo-500" />

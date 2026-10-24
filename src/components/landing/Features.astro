@@ -16,16 +16,16 @@ import SectionHeading from './SectionHeading.astro';
 <section id="features" class="scroll-mt-16 py-28">
     <div class="mx-auto max-w-6xl px-6">
         <SectionHeading
-            eyebrow="Platform"
-            title="Everything a content platform needs"
-            description="One workspace per project. Bring your own frontend — Next.js, Nuxt, Astro, mobile, or an AI agent."
+            eyebrow="Features"
+            title="Everything you need to manage content"
+            description="Each project gets its own workspace. Use the frontend you like: Next.js, Nuxt, Astro, a mobile app or an AI tool."
         />
 
         <div class="mt-16 grid gap-4 lg:grid-cols-6">
             <BentoCard
                 icon={Blocks}
-                title="Model anything, no migrations"
-                description="Entities with 20+ field types, field groups, relationships, repeaters and conditional logic."
+                title="Define your content, no code needed"
+                description="Create content types with 20+ field types, including lists, images and links to other content. No database migrations."
                 class="lg:col-span-4"
             >
                 <div class="flex flex-wrap gap-2">
@@ -45,8 +45,8 @@ import SectionHeading from './SectionHeading.astro';
             <BentoCard
                 icon={Zap}
                 order={1}
-                title="Headless REST API"
-                description="Versioned JSON endpoints with validation, pagination, filters and generated TypeScript types."
+                title="Your content, in any app"
+                description="Your site or app reads content with a single request. Responses come with filters, pagination and TypeScript types."
                 class="lg:col-span-2"
             >
                 <div class="space-y-1.5 font-mono text-xs">
@@ -71,39 +71,39 @@ import SectionHeading from './SectionHeading.astro';
                 icon={Sparkles}
                 order={2}
                 title="AI assistant"
-                description="Draft, translate and publish entries or design content models by chatting, with approval for risky actions."
+                description="Ask it to draft a post, translate an entry or set up a new content type. Risky actions wait for your approval."
                 class="lg:col-span-2"
             />
 
             <BentoCard
                 icon={KeyRound}
                 order={3}
-                title="Scoped API keys"
-                description="Hashed, revocable keys with read, write, delete, schema and MCP abilities, per model and with expiry."
+                title="Control who can do what"
+                description="Give each site, app or tool its own API key. Limit it to the content it needs and set an expiry date."
                 class="lg:col-span-2"
             />
 
             <BentoCard
                 icon={Users}
                 order={4}
-                title="Workspaces & roles"
-                description="Multi-tenant by design. Owners, admins, editors and viewers, each workspace fully isolated."
+                title="Separate projects, shared team"
+                description="Every project lives in its own isolated workspace. Invite owners, admins, editors and viewers."
                 class="lg:col-span-2"
             />
 
             <BentoCard
                 icon={Languages}
                 order={5}
-                title="Global from day one"
-                description="Translatable fields, locale-aware API payloads and an assistant that writes every language."
+                title="Multilingual from day one"
+                description="Translate any field and get each language from the same API. The AI assistant can write in every language."
                 class="lg:col-span-3"
             />
 
             <BentoCard
                 icon={History}
                 order={6}
-                title="Audited by default"
-                description="Every change from the editor, API, MCP or AI is stored in a revision history you can restore."
+                title="Undo any change"
+                description="Every edit, whether it comes from the editor, the API or an AI tool, is saved in a history you can restore."
                 class="lg:col-span-3"
             />
         </div>

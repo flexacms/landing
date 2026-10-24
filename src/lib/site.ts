@@ -20,6 +20,7 @@ export const appUrl = (path: string): string => `${APP_URL}${path}`;
 
 export const NAV_LINKS = [
     { label: 'Features', href: '#features' },
+    { label: 'How it works', href: '#how-it-works' },
     { label: 'Integrations', href: '#integrations' },
     { label: 'MCP', href: '#mcp' },
     { label: 'FAQ', href: '#faq' },
@@ -135,17 +136,17 @@ export const STEPS = [
     {
         title: 'Start from a template',
         description:
-            'Blog, product catalog, marketing site or blank — each workspace starts with models and sample entries ready to edit.',
+            'Pick a blog, product catalog, marketing site or a blank project. Sample content types and entries are ready to edit.',
     },
     {
-        title: 'Model and write',
+        title: 'Write your content',
         description:
-            'Shape fields in the visual builder, invite your team and draft content yourself or with the AI assistant.',
+            'Define your fields in the visual editor, invite your team, and write yourself or let the AI assistant draft it.',
     },
     {
-        title: 'Ship it anywhere',
+        title: 'Publish it anywhere',
         description:
-            'Issue a scoped API key and read content from your site, app or CMS plugin — or hand it to an AI client over MCP.',
+            'Create an API key and fetch content from your website or app, or connect an AI tool to manage it for you.',
     },
 ];
 
@@ -216,17 +217,17 @@ export const INTEGRATIONS: { name: string; detail: string; icon: BrandIcon }[] =
 export const MCP_ABILITIES = [
     {
         ability: 'Read',
-        tools: 'List models, read schemas, search and open entries, browse history',
+        tools: 'See your content types, search entries and browse their history',
     },
     {
         ability: 'Write',
-        tools: 'Create and edit entries, set values, publish and unpublish',
+        tools: 'Create and edit entries, then publish or unpublish them',
     },
     {
-        ability: 'Schema',
-        tools: 'Create and change content models, fields, groups and categories',
+        ability: 'Structure',
+        tools: 'Add or change content types, fields and categories',
     },
-    { ability: 'Delete', tools: 'Remove entries, fields or whole models' },
+    { ability: 'Delete', tools: 'Remove entries, fields or whole content types' },
 ];
 
 export const MCP_CLIENTS = [
@@ -237,6 +238,10 @@ export const MCP_CLIENTS = [
 ];
 
 export const FAQS = [
+    {
+        question: 'What is a headless CMS?',
+        answer: 'A content management system that stores and edits your content but does not render your website. Flexa gives you an editor for your content and an API to read it, so you can use any frontend: Next.js, Nuxt, Astro, a mobile app or an AI tool.',
+    },
     {
         question: 'Do I need to write migrations to add content types?',
         answer: 'No. Models and fields are defined in the visual builder (or by an AI client with the Schema ability) and are available in the API immediately.',

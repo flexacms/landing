@@ -17,18 +17,18 @@ const { isAuthEnabled = true } = Astro.props;
     </div>
     <div data-reveal class="mx-auto max-w-3xl px-6 text-center">
         <h2 class="text-4xl font-semibold tracking-[-0.04em] text-balance sm:text-5xl">
-            Launch your content API today
+            Ready to manage your content in one place?
         </h2>
         <p class="mx-auto mt-5 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
             Start from a blog, catalog or marketing template and connect your
-            first app in minutes.
+            first website or app in minutes.
         </p>
         <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             {
                 isAuthEnabled ? (
                     <>
                         <PrimaryButton href={appUrl('/app/register')}>
-                            Get started
+                            Create a free workspace
                         </PrimaryButton>
                         <a
                             href={appUrl('/app/login')}
@@ -38,8 +38,8 @@ const { isAuthEnabled = true } = Astro.props;
                         </a>
                     </>
                 ) : (
-                    <PrimaryButton href="#integrations">
-                        Explore the SDKs
+                    <PrimaryButton href="#how-it-works">
+                        See how it works
                     </PrimaryButton>
                 )
             }
