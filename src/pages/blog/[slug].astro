@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import ExampleCard from '@/components/landing/ExampleCard.astro';
 import Footer from '@/components/landing/Footer.astro';
 import Header from '@/components/landing/Header.astro';
 import PrimaryButton from '@/components/landing/PrimaryButton.astro';
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const isTutorial = post.data.kind === 'tutorial';
 
 const formatDate = (date: Date) =>
     date.toLocaleDateString('en', {
@@ -49,6 +51,44 @@ const formatDate = (date: Date) =>
                 <p class="mt-6 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
                     {post.data.description}
                 </p>
+
+                <aside class="mt-10 grid gap-6 rounded-3xl bg-zinc-50 p-6 ring-1 ring-zinc-950/5 sm:grid-cols-2 dark:bg-white/[0.03] dark:ring-white/10">
+                    <div class="space-y-4 text-sm">
+                        <p class="text-xs font-semibold tracking-[0.15em] text-zinc-500 uppercase">
+                            At a glance
+                        </p>
+                        <div>
+                            <p class="text-zinc-500">
+                                {isTutorial ? "What you'll build" : 'Who'}
+                            </p>
+                            <p class="mt-0.5 font-medium">{post.data.scenario}</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500">Stack</p>
+                            <p class="mt-0.5 font-medium">{post.data.stack}</p>
+                        </div>
+                        {
+                            post.data.duration && (
+                                <div>
+                                    <p class="text-zinc-500">Time</p>
+                                    <p class="mt-0.5 font-medium">{post.data.duration}</p>
+                                </div>
+                            )
+                        }
+                        {
+                            !isTutorial && (
+                                <p class="text-xs text-zinc-500">
+                                    Illustrative scenario. The business is
+                                    fictional; the workflow uses real Flexa
+                                    features.
+                                </p>
+                            )
+                        }
+                    </div>
+                    <div class="self-center">
+                        <ExampleCard {...post.data.example} />
+                    </div>
+                </aside>
 
                 <div class="mt-12 space-y-5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
                     <Content />
@@ -96,6 +136,32 @@ const formatDate = (date: Date) =>
     .article ul {
         list-style: disc;
         padding-left: 1.25rem;
+    }
+    .article ol {
+        list-style: decimal;
+        padding-left: 1.25rem;
+    }
+    .article table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+    }
+    .article th,
+    .article td {
+        border-bottom: 1px solid rgb(9 9 11 / 0.08);
+        padding: 0.5rem 1rem 0.5rem 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    .article th {
+        font-weight: 600;
+        color: inherit;
+    }
+    .dark .article th,
+    .dark .article td {
+        border-color: rgb(255 255 255 / 0.1);
     }
     .article li + li {
         margin-top: 0.5rem;
