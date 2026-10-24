@@ -2,10 +2,13 @@
 export const APP_NAME: string = import.meta.env.PUBLIC_APP_NAME || 'Flexa';
 
 /**
- * Origin of the Flexa app (dashboard, login, register). Empty keeps links
- * relative, which works when the landing is served from the same host.
+ * Origin of the Flexa app (dashboard, login, register, API and MCP). Set
+ * PUBLIC_APP_URL to an empty string to keep links relative when the landing
+ * is served from the same host as the app.
  */
-export const APP_URL: string = (import.meta.env.PUBLIC_APP_URL || '').replace(
+export const APP_URL: string = (
+    import.meta.env.PUBLIC_APP_URL ?? 'https://app.flexacms.com'
+).replace(
     /\/$/,
     '',
 );
@@ -106,7 +109,7 @@ $post->value('headline'); // resolves the app locale`,
     {
         label: 'cURL',
         file: 'terminal',
-        code: `curl https://flexacms.com/api/v1/posts?status=published \\
+        code: `curl https://app.flexacms.com/api/v1/posts?status=published \\
   -H "Authorization: Bearer flx_..."
 
 {
@@ -126,7 +129,7 @@ $post->value('headline'); // resolves the app locale`,
         label: 'MCP',
         file: 'terminal',
         code: `claude mcp add --transport http flexa \\
-  https://flexacms.com/mcp \\
+  https://app.flexacms.com/mcp \\
   --header "Authorization: Bearer flx_..."
 
 > Translate the last three posts to Spanish
