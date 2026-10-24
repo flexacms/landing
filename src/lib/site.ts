@@ -18,12 +18,14 @@ export const IS_AUTH_ENABLED: boolean =
 
 export const appUrl = (path: string): string => `${APP_URL}${path}`;
 
+/** Anchors point at the home page so they also work from /blog. */
 export const NAV_LINKS = [
-    { label: 'Features', href: '#features' },
-    { label: 'How it works', href: '#how-it-works' },
-    { label: 'Integrations', href: '#integrations' },
-    { label: 'MCP', href: '#mcp' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Features', href: '/#features' },
+    { label: 'How it works', href: '/#how-it-works' },
+    { label: 'Integrations', href: '/#integrations' },
+    { label: 'MCP', href: '/#mcp' },
+    { label: 'FAQ', href: '/#faq' },
+    { label: 'Blog', href: '/blog' },
 ];
 
 /**

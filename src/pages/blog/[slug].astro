@@ -1,0 +1,138 @@
+---
+import { getCollection, render } from 'astro:content';
+import Footer from '@/components/landing/Footer.astro';
+import Header from '@/components/landing/Header.astro';
+import PrimaryButton from '@/components/landing/PrimaryButton.astro';
+import MobileMenu from '@/components/react/mobile-menu';
+import Layout from '@/layouts/Layout.astro';
+import { APP_NAME, appUrl, IS_AUTH_ENABLED } from '@/lib/site';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog');
+
+    return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString('en', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+    });
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+    <div class="relative min-h-screen overflow-x-clip bg-white text-zinc-950 antialiased selection:bg-indigo-500/20 dark:bg-zinc-950 dark:text-white">
+        <Header name={APP_NAME} isAuthEnabled={IS_AUTH_ENABLED} />
+
+        <main class="px-6 pt-32 pb-28">
+            <article class="article mx-auto max-w-2xl">
+                <a href="/blog" class="text-sm font-medium text-indigo-600 hover:underline dark:text-indigo-300">
+                    ← All articles
+                </a>
+                <p class="mt-8 text-sm font-semibold text-indigo-600 dark:text-indigo-400">
+                    {post.data.tag}
+                </p>
+                <h1 class="mt-3 text-4xl font-semibold tracking-[-0.03em] text-balance sm:text-5xl">
+                    {post.data.title}
+                </h1>
+                <p class="mt-5 text-sm text-zinc-500">
+                    {post.data.author} ·
+                    <time datetime={post.data.pubDate.toISOString()}>
+                        {formatDate(post.data.pubDate)}
+                    </time>
+                </p>
+                <p class="mt-6 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {post.data.description}
+                </p>
+
+                <div class="mt-12 space-y-5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    <Content />
+                </div>
+
+                <div class="mt-16 rounded-3xl bg-zinc-50 p-8 text-center ring-1 ring-zinc-950/5 dark:bg-white/[0.03] dark:ring-white/10">
+                    <p class="text-lg font-semibold">Try this with your own content</p>
+                    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                        Start from a template and model your first content type in minutes.
+                    </p>
+                    {
+                        IS_AUTH_ENABLED && (
+                            <div class="mt-6 flex justify-center">
+                                <PrimaryButton href={appUrl('/app/register')}>
+                                    Create a free workspace
+                                </PrimaryButton>
+                            </div>
+                        )
+                    }
+                </div>
+            </article>
+        </main>
+
+        <Footer name={APP_NAME} isAuthEnabled={IS_AUTH_ENABLED} />
+
+        <MobileMenu
+            client:load
+            name={APP_NAME}
+            isAuthEnabled={IS_AUTH_ENABLED}
+        />
+    </div>
+</Layout>
+
+<style is:global>
+    .article h2 {
+        margin-top: 2.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--color-zinc-950, #09090b);
+    }
+    .dark .article h2 {
+        color: #fff;
+    }
+    .article ul {
+        list-style: disc;
+        padding-left: 1.25rem;
+    }
+    .article li + li {
+        margin-top: 0.5rem;
+    }
+    .article strong {
+        font-weight: 600;
+        color: inherit;
+    }
+    .article code {
+        border-radius: 0.375rem;
+        background: rgb(9 9 11 / 0.05);
+        padding: 0.1rem 0.35rem;
+        font-size: 0.875em;
+    }
+    .dark .article code {
+        background: rgb(255 255 255 / 0.08);
+    }
+    .article pre {
+        overflow-x: auto;
+        border-radius: 0.75rem;
+        background: #fafafa;
+        padding: 1rem 1.25rem;
+        font-size: 0.8125rem;
+        line-height: 1.6;
+        box-shadow: inset 0 0 0 1px rgb(9 9 11 / 0.06);
+    }
+    .dark .article pre {
+        background: rgb(255 255 255 / 0.04);
+        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+    }
+    .article pre code {
+        background: none;
+        padding: 0;
+    }
+    .article blockquote {
+        border-left: 2px solid rgb(99 102 241 / 0.5);
+        padding-left: 1rem;
+        font-style: italic;
+    }
+</style>
