@@ -2,6 +2,7 @@
 import { USE_CASES } from '@/lib/site';
 import { Building2, Languages, Megaphone, ShoppingBag } from 'lucide-react';
 import BentoCard from './BentoCard.astro';
+import ExampleCard from './ExampleCard.astro';
 import SectionHeading from './SectionHeading.astro';
 
 const icons = [Megaphone, Languages, ShoppingBag, Building2];
@@ -24,23 +25,23 @@ const icons = [Megaphone, Languages, ShoppingBag, Building2];
                         title={title}
                         description={description}
                     >
-                        <div class="overflow-hidden rounded-xl bg-white ring-1 ring-zinc-950/5 dark:bg-white/5 dark:ring-white/10">
-                            <div class="flex items-center justify-between border-b border-zinc-950/5 px-4 py-2.5 text-xs dark:border-white/10">
-                                <span class="font-medium text-zinc-950 dark:text-white">{example.heading}</span>
-                                <span class="rounded-full bg-indigo-500/10 px-2 py-0.5 font-medium text-indigo-600 dark:text-indigo-300">{example.status}</span>
-                            </div>
-                            <dl class="divide-y divide-zinc-950/5 dark:divide-white/10">
-                                {example.rows.map(({ label, value }) => (
-                                    <div class="flex items-baseline justify-between gap-4 px-4 py-2 text-xs">
-                                        <dt class="font-mono text-zinc-500">{label}</dt>
-                                        <dd class="truncate text-right font-medium text-zinc-800 dark:text-zinc-200">{value}</dd>
-                                    </div>
-                                ))}
-                            </dl>
-                        </div>
+                        <ExampleCard {...example} />
                     </BentoCard>
                 ))
             }
         </div>
+
+        <p
+            data-reveal
+            class="mt-10 text-center text-sm text-zinc-600 dark:text-zinc-400"
+        >
+            See each one step by step in the{' '}
+            <a
+                href="/blog"
+                class="font-medium text-zinc-950 underline decoration-zinc-950/20 underline-offset-4 hover:decoration-zinc-950 dark:text-white dark:decoration-white/30 dark:hover:decoration-white"
+            >
+                use case guides
+            </a>.
+        </p>
     </div>
 </section>
