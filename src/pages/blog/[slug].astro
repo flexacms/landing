@@ -17,6 +17,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const isTutorial = post.data.kind === 'tutorial';
+const isUpdate = post.data.kind === 'update';
+const glance = {
+    scenario: { who: 'Who', stack: 'Stack' },
+    tutorial: { who: "What you'll build", stack: 'Stack' },
+    update: { who: "Who it's for", stack: 'Available in' },
+}[post.data.kind];
 
 const formatDate = (date: Date) =>
     date.toLocaleDateString('en', {
@@ -52,19 +58,29 @@ const formatDate = (date: Date) =>
                     {post.data.description}
                 </p>
 
+                {
+                    post.data.cover && (
+                        <img
+                            src={post.data.cover}
+                            alt={post.data.coverAlt ?? ''}
+                            class="mt-10 w-full rounded-2xl ring-1 ring-zinc-950/5 dark:ring-white/10"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    )
+                }
+
                 <aside class="mt-10 grid gap-6 rounded-3xl bg-zinc-50 p-6 ring-1 ring-zinc-950/5 sm:grid-cols-2 dark:bg-white/[0.03] dark:ring-white/10">
                     <div class="space-y-4 text-sm">
                         <p class="text-xs font-semibold tracking-[0.15em] text-zinc-500 uppercase">
                             At a glance
                         </p>
                         <div>
-                            <p class="text-zinc-500">
-                                {isTutorial ? "What you'll build" : 'Who'}
-                            </p>
+                            <p class="text-zinc-500">{glance.who}</p>
                             <p class="mt-0.5 font-medium">{post.data.scenario}</p>
                         </div>
                         <div>
-                            <p class="text-zinc-500">Stack</p>
+                            <p class="text-zinc-500">{glance.stack}</p>
                             <p class="mt-0.5 font-medium">{post.data.stack}</p>
                         </div>
                         {
@@ -76,7 +92,7 @@ const formatDate = (date: Date) =>
                             )
                         }
                         {
-                            !isTutorial && (
+                            !isTutorial && !isUpdate && (
                                 <p class="text-xs text-zinc-500">
                                     Illustrative scenario. The business is
                                     fictional; the workflow uses real Flexa
@@ -195,6 +211,22 @@ const formatDate = (date: Date) =>
     .article pre code {
         background: none;
         padding: 0;
+    }
+    .article img {
+        width: 100%;
+        margin: 2rem 0 0.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 0 1px rgb(9 9 11 / 0.05);
+    }
+    .dark .article img {
+        box-shadow: 0 0 0 1px rgb(255 255 255 / 0.1);
+    }
+    .article p:has(> img) + p > em:only-child {
+        display: block;
+        text-align: center;
+        font-size: 0.875rem;
+        font-style: normal;
+        color: rgb(113 113 122);
     }
     .article blockquote {
         border-left: 2px solid rgb(99 102 241 / 0.5);

@@ -9,12 +9,18 @@ const blog = defineCollection({
         pubDate: z.coerce.date(),
         tag: z.string(),
         author: z.string().default('Flexa team'),
-        /** Scenarios use fictional businesses; tutorials are hands-on guides. */
-        kind: z.enum(['scenario', 'tutorial']).default('scenario'),
-        /** Scenario: who it's about. Tutorial: what you'll build. */
+        /**
+         * Scenarios use fictional businesses, tutorials are hands-on guides and
+         * updates announce product changes.
+         */
+        kind: z.enum(['scenario', 'tutorial', 'update']).default('scenario'),
+        /** Scenario: who it's about. Tutorial: what you'll build. Update: who it's for. */
         scenario: z.string(),
         stack: z.string(),
         duration: z.string().optional(),
+        /** Screenshot shown on the post and its card, from /public. */
+        cover: z.string().optional(),
+        coverAlt: z.string().optional(),
         /** Snapshot of the content shown in the post's example card. */
         example: z.object({
             heading: z.string(),
